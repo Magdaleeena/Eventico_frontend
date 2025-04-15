@@ -8,7 +8,7 @@ const api = axios.create({
 export const getEvents = async (options = {}) => {
     const {
         page = 1,
-        limit = 10,
+        limit = 9,
         category,
         sortBy = 'date',
         sortOrder = 'asc',
