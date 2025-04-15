@@ -14,7 +14,7 @@ export const getEvents = async (options = {}) => {
         sortOrder = 'asc',
       } = options;
 
-    try {
+    try {    
     const { data } = await api.get('/events', {
         params: {
             page,
