@@ -1,19 +1,26 @@
-import { useState } from 'react'
-
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Events from './pages/Events';
+import CreateEvent from './pages/CreateEvent';
+import Search from './pages/Search';
+import Login from './pages/Login';
 
 function App() {
- 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white p-8 rounded shadow text-center space-y-4">
-        <h1 className="text-4xl font-bold">This text should be RED 🔥</h1>
-        <p className="text-lg">And the background should be light gray (#f9fafb)</p>
-        <p className="font-light">If the font looks modern, you're seeing Inter.</p>
-      </div>
-    </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/create" element={<CreateEvent />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

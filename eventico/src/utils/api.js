@@ -5,9 +5,25 @@ const api = axios.create({
 });
 
 // Fetch all events
-export const getEvents = async () => {
-  try {
-    const { data } = await api.get('/events');
+export const getEvents = async (options = {}) => {
+    const {
+        page = 1,
+        limit = 10,
+        category,
+        sortBy = 'date',
+        sortOrder = 'asc',
+      } = options;
+
+    try {
+    const { data } = await api.get('/events', {
+        params: {
+            page,
+            limit,
+            category,
+            sortBy,
+            sortOrder,
+        },
+    });
     return data;
   } catch (error) {
     console.error('Error fetching events:', error);
