@@ -6,6 +6,7 @@ import Events from './pages/Events';
 import CreateEvent from './pages/CreateEvent';
 import Search from './pages/Search';
 import Login from './pages/Login';
+import SingleEvent from './pages/SingleEvent';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/create" element={<CreateEvent />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/events/:eventId" element={<SingleEvent />} />
       </Routes>
       <Footer />
     </>
