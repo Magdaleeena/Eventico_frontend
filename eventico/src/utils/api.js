@@ -80,4 +80,26 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// USER: Get profile
+export const getUserProfile = async () => {
+  try {
+    const { data } = await api.get('/users/me');
+    return data;
+  } catch (error) {
+    console.error('Error fetching profile:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// USER: Update profile
+export const updateUserProfile = async (updatedData) => {
+  try {
+    const { data } = await api.put('/users/me', updatedData);
+    return data;
+  } catch (error) {
+    console.error('Error updating profile:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
 

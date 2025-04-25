@@ -9,6 +9,8 @@ import SingleEvent from './pages/SingleEvent';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import SignOut from './pages/SignOut';
+import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 
 
 function App() {
@@ -23,7 +25,9 @@ function App() {
         <Route path="/search" element={<Search />} />        
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<SignIn/>} /> 
-        <Route path="/signout" element={<SignOut />} />      
+        <Route path="/signout" element={<SignOut />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />      
       </Routes>
       <Footer />
     </>
