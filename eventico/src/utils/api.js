@@ -49,3 +49,14 @@ export const searchEventsLocally = (events, query) => {
   );
 };
 
+// USER: Sign up
+export const signUpUser = async (userData) => {
+  try {
+    const { data } = await api.post('/users/register', userData);
+    return data;
+  } catch (error) {
+    console.error('Error signing up:', error.response?.data || error.message);
+    throw error;
+  }
+};
+

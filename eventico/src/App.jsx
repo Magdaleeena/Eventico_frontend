@@ -5,8 +5,10 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import CreateEvent from './pages/CreateEvent';
 import Search from './pages/Search';
-import Login from './pages/Login';
 import SingleEvent from './pages/SingleEvent';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+
 
 function App() {
   return (
@@ -15,10 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/create" element={<CreateEvent />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/events/:eventId" element={<SingleEvent />} />
+        <Route path="/create" element={<CreateEvent />} />
+        <Route path="/search" element={<Search />} />        
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<SignIn/>} />        
       </Routes>
       <Footer />
     </>

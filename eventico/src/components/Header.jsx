@@ -18,12 +18,20 @@ const Header = () => {
         </Link>
       </nav>
 
-      <Link
-        to="/login"
-        className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-4 py-2 rounded-md transition"
-      >
-        Sign In
-      </Link>
+      <div className="flex items-center space-x-4">
+        <Link
+          to="/login"
+          className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-4 py-2 rounded-md transition"
+        >
+          Sign In
+        </Link>
+        <Link
+          to="/signup"
+          className="border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white font-medium px-4 py-2 rounded-md transition"
+        >
+          Sign Up
+        </Link>
+      </div>
     </header>
   );
 };
