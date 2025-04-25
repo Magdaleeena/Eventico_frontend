@@ -60,3 +60,24 @@ export const signUpUser = async (userData) => {
   }
 };
 
+// USER: Sign in (login)
+export const loginUser = async (credentials) => {
+  try {
+    const { data } = await api.post('/users/login', credentials);
+    localStorage.setItem('token', data.token);    // Save the token for future authenticated API requests
+    return data;
+  } catch (error) {
+    console.error('Error logging in:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+

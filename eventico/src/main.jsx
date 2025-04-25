@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import React from 'react';
 import App from './App';
 import './index.css';
+import { AuthProvider } from './context/AuthContext';
 
 
 // const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -12,10 +13,12 @@ import './index.css';
 // }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>    
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>    
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>  
+        <App />     
+      </AuthProvider>
+    </BrowserRouter>    
   </React.StrictMode>
 );
 

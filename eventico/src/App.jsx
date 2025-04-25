@@ -8,6 +8,7 @@ import Search from './pages/Search';
 import SingleEvent from './pages/SingleEvent';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import SignOut from './pages/SignOut';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         <Route path="/create" element={<CreateEvent />} />
         <Route path="/search" element={<Search />} />        
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<SignIn/>} />        
+        <Route path="/login" element={<SignIn/>} /> 
+        <Route path="/signout" element={<SignOut />} />      
       </Routes>
       <Footer />
     </>
