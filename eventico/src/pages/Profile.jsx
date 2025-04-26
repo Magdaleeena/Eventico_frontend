@@ -3,6 +3,7 @@ import { getUserProfile } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -82,16 +83,23 @@ const Profile = () => {
         </div>
   
         <div className="mt-4">
-          <strong>Events Signed Up:</strong>
-          <ul className="list-disc list-inside ml-4">
-            {profile.eventsSignedUp?.length > 0 ? (
-              profile.eventsSignedUp.map((eventId, idx) => (
-                <li key={eventId || idx}>{eventId}</li>
-              ))
-            ) : (
-              <li>None</li>
-            )}
-          </ul>
+            <strong>Events Signed Up:</strong>
+            <ul className="list-disc list-inside ml-4">
+                {profile.eventsSignedUp?.length > 0 ? (
+                profile.eventsSignedUp.map((event, idx) => (
+                    <li key={event._id || idx} className="mb-2">
+                    <Link to={`/events/${event._id}`} className="text-purple-600 hover:underline">
+                        {event.title}
+                    </Link>
+                    <div className="text-sm text-gray-600">
+                        {event.date ? new Date(event.date).toLocaleDateString() : 'Unknown Date'} — {event.location || 'Unknown Location'}
+                    </div>
+                    </li>
+                ))
+                ) : (
+                <li>None</li>
+                )}
+            </ul>
         </div>
   
         {profile.role === 'admin' && (
@@ -124,3 +132,16 @@ const Profile = () => {
 
 export default Profile;
 
+/* <div className="mt-4">
+          <strong>Events Signed Up:</strong>
+          <ul className="list-disc list-inside ml-4">
+            {profile.eventsSignedUp?.length > 0 ? (
+              profile.eventsSignedUp.map((eventId, idx) => (
+                <li key={eventId || idx}>{eventId}</li>
+              ))
+            ) : (
+              <li>None</li>
+            )}
+          </ul>
+        </div>
+*/

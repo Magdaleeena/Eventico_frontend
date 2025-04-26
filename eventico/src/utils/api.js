@@ -102,4 +102,26 @@ export const updateUserProfile = async (updatedData) => {
   }
 };
 
+// Sign Up for an event
+export const signUpForEvent = async (eventId) => {
+  try {
+    const { data } = await api.post(`/events/${eventId}/signup`);
+    return data;
+  } catch (err) {
+    console.error('Error signing up for event:', err.response?.data || err.message);
+    throw err;
+  }
+};
+
+// Unsign Up from an event
+export const unSignUpFromEvent = async (eventId) => {
+  try {
+    const { data } = await api.post(`/events/${eventId}/unsignup`);
+    return data;
+  } catch (err) {
+    console.error('Error unsigning from event:', err.response?.data || err.message);
+    throw err;
+  }
+};
+
 

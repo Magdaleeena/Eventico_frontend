@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getEventById } from "../utils/api";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import EventActions from "./EventActions";
 import { Calendar, MapPin, Users, Mail, Phone, ExternalLink } from "lucide-react";
 
 const SingleEvent = () => {
@@ -92,6 +93,7 @@ const SingleEvent = () => {
                 </a>
             </p>
             </div>
+            <EventActions event={event} />
         </section>
     );
 };
