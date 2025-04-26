@@ -82,49 +82,58 @@ const Profile = () => {
           </ul>
         </div>
   
+        {profile.role !== 'admin' && (
         <div className="mt-4">
             <strong>Events Signed Up:</strong>
             <ul className="list-disc list-inside ml-4">
-                {profile.eventsSignedUp?.length > 0 ? (
+            {Array.isArray(profile.eventsSignedUp) && profile.eventsSignedUp.length > 0 ? (
                 profile.eventsSignedUp.map((event, idx) => (
-                    <li key={event._id || idx} className="mb-2">
+                <li key={event._id || idx} className="mb-2">
                     <Link to={`/events/${event._id}`} className="text-purple-600 hover:underline">
-                        {event.title}
+                    {event.title || 'Untitled Event'}
                     </Link>
                     <div className="text-sm text-gray-600">
-                        {event.date ? new Date(event.date).toLocaleDateString() : 'Unknown Date'} — {event.location || 'Unknown Location'}
+                    {event.date ? new Date(event.date).toLocaleDateString() : 'Unknown Date'} — {event.location || 'Unknown Location'}
                     </div>
-                    </li>
+                </li>
                 ))
-                ) : (
+            ) : (
                 <li>None</li>
-                )}
+            )}
             </ul>
         </div>
+        )}
   
         {profile.role === 'admin' && (
-          <div className="mt-4">
+        <div className="mt-4">
             <strong>Events Managed:</strong>
             <ul className="list-disc list-inside ml-4">
-              {profile.eventsManaged?.length > 0 ? (
-                profile.eventsManaged.map((eventId, idx) => (
-                  <li key={eventId || idx}>{eventId}</li>
+            {Array.isArray(profile.eventsManaged) && profile.eventsManaged.length > 0 ? (
+                profile.eventsManaged.map((event, idx) => (
+                <li key={event._id || idx} className="mb-2">
+                    <Link to={`/events/${event._id}`} className="text-purple-600 hover:underline">
+                    {event.title || 'Untitled Event'}
+                    </Link>
+                    <div className="text-sm text-gray-600">
+                    {event.date ? new Date(event.date).toLocaleDateString() : 'Unknown Date'} — {event.location || 'Unknown Location'}
+                    </div>
+                </li>
                 ))
-              ) : (
+            ) : (
                 <li>None</li>
-              )}
+            )}
             </ul>
-          </div>
+        </div>
         )}
-      </div>
+        </div>
   
-      <div className="mt-6">
-        <button
-          className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
-          onClick={() => navigate('/edit-profile')}
-        >
-          Edit Profile
-        </button>
+        <div className="mt-6">
+            <button
+            className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+            onClick={() => navigate('/edit-profile')}
+            >
+            Edit Profile
+            </button>
       </div>
     </div>
   );
