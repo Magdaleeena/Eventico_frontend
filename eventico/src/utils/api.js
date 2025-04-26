@@ -124,4 +124,21 @@ export const unSignUpFromEvent = async (eventId) => {
   }
 };
 
+// Create Event fpr admins
+export const createEvent = async (eventData) => {
+  try {
+    const token = localStorage.getItem('token'); 
+    const { data } = await api.post('/events', eventData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error creating event:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+
 

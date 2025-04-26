@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { getUserProfile } from '../utils/api';
 
 const AuthContext = createContext();
 
@@ -24,9 +25,19 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     setUser(null);
   };
+// Fetch the latest user data from the backend
+  const refreshUser = async () => {
+    try {
+      const updatedUser = await getUserProfile(); 
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      setUser(updatedUser);
+    } catch (error) {
+      console.error('Failed to refresh user data:', error);
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

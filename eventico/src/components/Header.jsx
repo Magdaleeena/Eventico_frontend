@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
+
+  useEffect(() => {
+    refreshUser();
+    }, [refreshUser]);
 
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b shadow-sm bg-white">
@@ -12,7 +17,11 @@ const Header = () => {
       <nav className="space-x-6 font-medium flex items-center">
         <Link to="/" className="hover:text-purple-700">Home</Link>
         <Link to="/events" className="hover:text-purple-700">Events</Link>
-        <Link to="/create" className="hover:text-purple-700">Create Event</Link>
+
+        {user?.role === 'admin' && (
+          <Link to="/create" className="hover:text-purple-700">Create Event</Link>
+        )}
+
         <Link
           to="/search"
           className="hover:text-purple-700 inline-flex items-center justify-center w-8 h-8 rounded-md transition-colors"
@@ -66,3 +75,21 @@ const Header = () => {
 };
 
 export default Header;
+
+
+/*
+<<nav className="space-x-6 font-medium flex items-center">
+        <Link to="/" className="hover:text-purple-700">Home</Link>
+        <Link to="/events" className="hover:text-purple-700">Events</Link>
+        <Link to="/create" className="hover:text-purple-700">Create Event</Link>
+        <Link
+          to="/search"
+          className="hover:text-purple-700 inline-flex items-center justify-center w-8 h-8 rounded-md transition-colors"
+          title="Search"
+          aria-label="Search"
+        >
+          <Search className="w-5 h-5" />
+        </Link>
+      </nav>
+
+*/
