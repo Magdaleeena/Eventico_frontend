@@ -124,7 +124,7 @@ export const unSignUpFromEvent = async (eventId) => {
   }
 };
 
-// Create Event fpr admins
+// Create Event for admins
 export const createEvent = async (eventData) => {
   try {
     const token = localStorage.getItem('token'); 
@@ -140,5 +140,26 @@ export const createEvent = async (eventData) => {
   }
 };
 
+// Update an Event (Admin only)
+export const updateEvent = async (eventId, updatedData) => {
+  try {
+    const { data } = await api.put(`/events/${eventId}`, updatedData);
+    return data;
+  } catch (error) {
+    console.error('Error updating event:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// Delete an Event (Admin only)
+export const deleteEvent = async (eventId) => {
+  try {
+    const { data } = await api.delete(`/events/${eventId}`);
+    return data;
+  } catch (error) {
+    console.error('Error deleting event:', error.response?.data || error.message);
+    throw error;
+  }
+};
 
 

@@ -5,7 +5,7 @@ import Loading from '../components/Loading';
 import Error from '../components/Error';
 
 const EventActions = ({ event }) => {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [signedUp, setSignedUp] = useState(false);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
@@ -13,9 +13,9 @@ const EventActions = ({ event }) => {
   const [showCalendarBtn, setShowCalendarBtn] = useState(false);
 
   useEffect(() => {
-    const checkSignupStatus = async () => {
-      setLoading(true);
+    const checkSignupStatus = async () => {      
       try {
+        
         const profile = await getUserProfile();
         const isSignedUp = profile.eventsSignedUp?.some(ev => ev._id === event._id);
         setSignedUp(isSignedUp);
@@ -81,9 +81,10 @@ const EventActions = ({ event }) => {
     window.open(googleCalendarUrl, '_blank');
   };
 
+  if (authLoading || loading) return null;
   if (!user || user.role === 'admin') return null;
 
-  if (loading) return <Loading message="Checking event signup..." />;
+  
   if (error) return <Error message={error} />;
 
   return (
