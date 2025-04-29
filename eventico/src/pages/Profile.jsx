@@ -52,7 +52,6 @@ const Profile = () => {
       </div>
     </div>
 
-    {/* User Info Section */}
     <div className="space-y-6">
       <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
         <div>
@@ -94,7 +93,6 @@ const Profile = () => {
       </dl>
     </div>
 
-    {/* Social Links Section */}
     <div className="mt-6">
       <h3 className="text-2xl font-bold text-purple-700 mb-4">Social Links</h3>
       <ul className="list-disc list-inside ml-4 text-gray-600 space-y-1">
