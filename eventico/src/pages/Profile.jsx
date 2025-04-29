@@ -38,49 +38,71 @@ const Profile = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8 space-y-6">
-      <div className="flex items-center space-x-4 mb-6">
-        <div className="w-20 h-20 rounded-full bg-gray-200 flex justify-center items-center">
-          <img 
-            src={profile.profileImage || "/images/default_profile_img.png"} 
-            alt="Profile" 
-            className="w-full h-full rounded-full object-cover" 
-          />
+       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
+      <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+        <img
+          src={profile.profileImage || "/images/default_profile_img.png"}
+          alt={`${profile.firstName} ${profile.lastName}'s profile picture`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="text-center sm:text-left">
+        <h2 className="text-3xl font-bold text-purple-700">{profile.firstName} {profile.lastName}</h2>
+        <p className="text-gray-500">@{profile.username}</p>
+      </div>
+    </div>
+
+    {/* User Info Section */}
+    <div className="space-y-6">
+      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+        <div>
+          <dt className="font-semibold text-gray-700">Email</dt>
+          <dd className="text-gray-600">{profile.email}</dd>
         </div>
         <div>
-          <h2 className="text-3xl font-bold text-purple-700">{profile.firstName} {profile.lastName}</h2>
-          <p className="text-gray-500">{profile.username}</p>
+          <dt className="font-semibold text-gray-700">Phone</dt>
+          <dd className="text-gray-600">{profile.phone || 'Not provided'}</dd>
         </div>
-      </div>
-  
-      <div className="space-y-4">
-        <div className="flex justify-between">
-          <p><strong>Email:</strong> {profile.email}</p>
-          <p><strong>Phone:</strong> {profile.phone || 'Not provided'}</p>
+        <div>
+          <dt className="font-semibold text-gray-700">Role</dt>
+          <dd className="text-gray-600">{profile.role}</dd>
         </div>
-        <div className="flex justify-between">
-          <p><strong>Role:</strong> {profile.role}</p>
-          <p><strong>Location:</strong> {profile.location || 'Not provided'}</p>
+        <div>
+          <dt className="font-semibold text-gray-700">Location</dt>
+          <dd className="text-gray-600">{profile.location || 'Not provided'}</dd>
         </div>
-        <div className="flex justify-between">
-          <p><strong>Bio:</strong> {profile.bio || 'Not provided'}</p>
-          <p><strong>Date of Birth:</strong> {profile.dateOfBirth ? new Date(profile.dateOfBirth).toLocaleDateString() : 'Not provided'}</p>
+        <div className="sm:col-span-2">
+          <dt className="font-semibold text-gray-700">Bio</dt>
+          <dd className="text-gray-600 text-justify">{profile.bio || 'Not provided'}</dd>
         </div>
-        <div className="flex justify-between">
-          <p><strong>Verified:</strong> {profile.isVerified ? 'Yes' : 'No'}</p>
-          <p><strong>Active:</strong> {profile.isActive ? 'Yes' : 'No'}</p>
+        <div>
+          <dt className="font-semibold text-gray-700">Date of Birth</dt>
+          <dd className="text-gray-600">{profile.dateOfBirth ? new Date(profile.dateOfBirth).toLocaleDateString() : 'Not provided'}</dd>
         </div>
-        <div className="flex justify-between">
-          <p><strong>Last Login:</strong> {profile.lastLogin ? new Date(profile.lastLogin).toLocaleString() : 'Not available'}</p>
+        <div>
+          <dt className="font-semibold text-gray-700">Verified</dt>
+          <dd className="text-gray-600">{profile.isVerified ? 'Yes' : 'No'}</dd>
         </div>
-  
-        <div className="mt-4">
-          <strong>Social Links:</strong>
-          <ul className="list-disc list-inside ml-4">
-            <li>LinkedIn: {profile.social?.linkedin || 'Not provided'}</li>
-            <li>Twitter: {profile.social?.twitter || 'Not provided'}</li>
-            <li>Website: {profile.social?.website || 'Not provided'}</li>
-          </ul>
+        <div>
+          <dt className="font-semibold text-gray-700">Active</dt>
+          <dd className="text-gray-600">{profile.isActive ? 'Yes' : 'No'}</dd>
         </div>
+        <div className="sm:col-span-2">
+          <dt className="font-semibold text-gray-700">Last Login</dt>
+          <dd className="text-gray-600">{profile.lastLogin ? new Date(profile.lastLogin).toLocaleString() : 'Not available'}</dd>
+        </div>
+      </dl>
+    </div>
+
+    {/* Social Links Section */}
+    <div className="mt-6">
+      <h3 className="text-2xl font-bold text-purple-700 mb-4">Social Links</h3>
+      <ul className="list-disc list-inside ml-4 text-gray-600 space-y-1">
+        <li><strong>LinkedIn:</strong> {profile.social?.linkedin || 'Not provided'}</li>
+        <li><strong>Twitter:</strong> {profile.social?.twitter || 'Not provided'}</li>
+        <li><strong>Website:</strong> {profile.social?.website || 'Not provided'}</li>
+      </ul>
+    </div>
   
         {profile.role !== 'admin' && (
         <div className="mt-4">
@@ -125,7 +147,7 @@ const Profile = () => {
             </ul>
         </div>
         )}
-        </div>
+        
   
         <div className="mt-6">
             <button
@@ -140,17 +162,3 @@ const Profile = () => {
 }
 
 export default Profile;
-
-/* <div className="mt-4">
-          <strong>Events Signed Up:</strong>
-          <ul className="list-disc list-inside ml-4">
-            {profile.eventsSignedUp?.length > 0 ? (
-              profile.eventsSignedUp.map((eventId, idx) => (
-                <li key={eventId || idx}>{eventId}</li>
-              ))
-            ) : (
-              <li>None</li>
-            )}
-          </ul>
-        </div>
-*/
