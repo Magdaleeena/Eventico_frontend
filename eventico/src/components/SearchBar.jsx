@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getEvents } from "../utils/api";
+import { getAllEventsForSearch } from "../utils/api";
 import { MapPin } from 'lucide-react';
 import Loading from "./Loading";
 import Error from "./Error";
@@ -14,8 +14,8 @@ const SearchBar = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const data = await getEvents();
-        setEvents(data.events); 
+        const allEvents = await getAllEventsForSearch();
+        setEvents(allEvents); 
         setLoading(false);
       } catch (error) {
         setError("Failed to fetch events");
@@ -26,30 +26,39 @@ const SearchBar = () => {
   }, []);
 
   const handleSearch = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase().trim();
     setSearchQuery(value);
-
-    if (value.trim()) {
-        const lowerQuery = value.toLowerCase();
-        const filtered = events.filter((event) => {
-          return (
-            event.title?.toLowerCase().includes(lowerQuery) ||
-            event.description?.toLowerCase().includes(lowerQuery) ||
-            event.category?.toLowerCase().includes(lowerQuery) ||
-            event.location?.toLowerCase().includes(lowerQuery) ||
-            event.keywords?.some((keyword) =>
-              keyword.toLowerCase().includes(lowerQuery)
-            ) ||
-            event.tags?.some((tag) =>
-              tag.toLowerCase().includes(lowerQuery)
-            )
-          );
-        });
-        setFilteredEvents(filtered);
-      } else {
-        setFilteredEvents([]);
-      }
-};
+  
+    if (!value) {
+      setFilteredEvents([]);
+      return;
+    }
+  
+    const filtered = events.filter((event) => {
+      const titleMatch = event.title?.toLowerCase().includes(value);
+      const descMatch = event.description?.toLowerCase().includes(value);
+      const categoryMatch = event.category?.toLowerCase().includes(value);
+      const locationMatch = event.location?.toLowerCase().includes(value);
+  
+      const keywordsMatch = (event.keywords || []).some((k) =>
+        k.toLowerCase().includes(value)
+      );
+      const tagsMatch = (event.tags || []).some((t) =>
+        t.toLowerCase().includes(value)
+      );
+  
+      return (
+        titleMatch ||
+        descMatch ||
+        categoryMatch ||
+        locationMatch ||
+        keywordsMatch ||
+        tagsMatch
+      );
+    });
+  
+    setFilteredEvents(filtered);
+  }; 
 
   return (
     <section aria-labelledby="search-heading" className="max-w-2xl mx-auto p-4">
@@ -91,6 +100,6 @@ const SearchBar = () => {
         )}
     </section>
   );
-};
 
+};
 export default SearchBar;

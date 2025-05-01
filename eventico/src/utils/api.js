@@ -4,7 +4,23 @@ const api = axios.create({
   baseURL: 'https://eventico-backend.onrender.com/api',
 });
 
-// Fetch all events
+
+// Fetch events for search
+export const getAllEventsForSearch = async () => {
+  try {
+    const { data } = await api.get('/events', { 
+      params: {
+        limit: 100
+      },
+    });
+    return data.events;
+  } catch (error) {
+    console.log('Error fetching all events for search', error);
+    throw error;
+  }
+}
+
+// Fetch all events 
 export const getEvents = async (options = {}) => {
     const {
         page = 1,
