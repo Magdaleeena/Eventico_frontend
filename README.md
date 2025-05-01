@@ -9,7 +9,7 @@ The application allows users to explore, sign up for, create, and manage events,
 The goal of this project is to build a modern, accessible frontend that interacts with a real-world backend API.
 This simulates creating a real-world application like Eventbrite or Meetup, using current best practices for frontend development.
 
-🔗 **Deployed:** [Visit deployed App here](https://eventico.netlify.app/)  
+🔗 **Deployed:** [Visit Eventico here](https://eventico.netlify.app/)  
 
 
 ---
