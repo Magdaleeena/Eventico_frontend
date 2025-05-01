@@ -1,32 +1,33 @@
 # Eventico Frontend 🎉
 
-This is the frontend React app for Eventico, a full-stack event management platform.
-The application allows users to explore, sign up for, create, and manage events, with full authentication and responsive design.
+Welcome to the frontend of **Eventico**, a modern full-stack event management platform.  
+
+This React application allows users to browse, sign up for, create, and manage events. It features full authentication, responsive design, and seamless integration with the Eventico backend API.
 
 ---
 
 ## 🚀 Project Summary
-The goal of this project is to build a modern, accessible frontend that interacts with a real-world backend API.
-This simulates creating a real-world application like Eventbrite or Meetup, using current best practices for frontend development.
+Eventico Frontend delivers an interactive and accessible user experience by consuming a RESTful backend API.
+Built with **React**, **Vite**, and **TailwindCSS**, it follows modern frontend best practices to simulate real-world platforms like Eventbrite or Meetup.
 
-🔗 **Deployed:** [Visit Eventico here](https://eventico.netlify.app/)  
+🔗 **Deployed App:** [Visit Eventico](https://eventico.netlify.app/)  
 
 
 ---
 
 ## 🛠 Tech Stack
 
-- **React 18** – Frontend JavaScript library for building dynamic UIs
-- **Vite** – Modern frontend build tool for fast development and optimized production builds
+- **React 18** – Component-based UI library for building fast and dynamic interfaces
+- **Vite** – Modern frontend build tool for fast development and optimised production builds
 - **TailwindCSS** – Utility-first CSS framework for custom and responsive styling
-- **Axios** – Promise-based HTTP client for communicating with the backend API
-- **React Router DOM** – Declarative routing and navigation management in React apps
-- **Lucide-react** / **Heroicons** – Icon libraries for clean, accessible SVG icons
-- **Netlify** – Deployment platform used to host the frontend (with CI/CD support)
+- **Axios** – HTTP client for interacting with the backend API
+- **React Router DOM** – Client-side routing and navigation
+- **Lucide-react** / **Heroicons** – Accessible, scalable icon libraries
+- **Netlify** – CI/CD deployment and hosting platform
 
 ---
 
-## Set up instructions
+## ⚙️ Setup instructions
 #### 1. Clone the repository:
 
    ```bash
@@ -40,11 +41,11 @@ npm install
   ```
 
 #### 3. Environment Variables:
-Create a .env file in the root of the project:
+Create a `.env file` in the root of the project:
  ```bash
 VITE_API_BASE_URL=https://eventico-backend.onrender.com/api
 ```
-Or if running locally with your backend:
+> 💡**Note:** For local development with a locally running backend, use:
 ```bash
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
@@ -56,30 +57,40 @@ npm run dev
 
 ---
 
-## Main Features
+## 📱Main Features
 
-🧑‍💻 User Authentication (Sign up, Login, JWT protected routes)
+- 🧑‍💻 **User Authentication** – Sign up, log in, and access protected routes using JWT
 
-🗺️ Event Browsing (View all events, filter, and sort)
+- 🗺️ **Event Browsing** – View all events with support for filtering and sorting
 
-🎫 Event Signup (Join and leave events)
+- 🎫 **Event Signup** – Join or leave events with real-time updates
 
-🛠️ Profile Management (Edit profile, see events you've joined)
+- 🛠️ **Profile Management** – Edit user profile and view joined events
 
-👑 Admin Controls (Create, edit, delete events)
+- 👑 **Admin Controls** – Create, update, and delete events (admin only)
 
-📱 Responsive Design (Mobile & Desktop friendly)
+- 📱 **Responsive Design** – Optimised layout for mobile and desktop screens
 
-♿ Accessibility Considerations (Keyboard-friendly and ARIA practices)
+- ♿ **Accessibility Considerations** – ARIA roles, keyboard navigation, and semantic HTML
 
 ---
 
 ## 🔒 Security
 
-Token-based authentication via secure JWT.
+- 🔐 **Token-Based Authentication** – Secure user sessions using JWTs for stateless authentication
+  
+- 🛡️ **Protected Routes** – Restrict access to authenticated users using client-side route guards
 
-Frontend route protection — redirects unauthenticated users.
+- ⚠️ **Error Handling** – Display user-friendly messages for authentication and authorisation errors (e.g., 401 Unauthorised, 403 Forbidden)
+  
+- ✅ **Secure API Communication** – Attach JWTs to Axios requests via Authorisation headers for authenticated API communication
 
-Error handling for better user experience (friendly messages).
+---
 
-Best practices in API calls (secured endpoints, 401/403 handling).
+## 📝 Notes
+- This frontend depends on the Eventico Backend for data and authentication.
+
+- For full functionality, ensure the backend is running or deployed properly.
+
+- Deployment handled via **Netlify** with automatic CI/CD on push.
+
