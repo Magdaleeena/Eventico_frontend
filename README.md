@@ -1,4 +1,4 @@
-# Eventico_frontend 🎉
+# Eventico Frontend 🎉
 
 This is the frontend React app for Eventico, a full-stack event management platform.
 The application allows users to explore, sign up for, create, and manage events, with full authentication and responsive design.
