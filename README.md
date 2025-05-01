@@ -9,19 +9,20 @@ The application allows users to explore, sign up for, create, and manage events,
 The goal of this project is to build a modern, accessible frontend that interacts with a real-world backend API.
 This simulates creating a real-world application like Eventbrite or Meetup, using current best practices for frontend development.
 
-🔗 **Deployed:** [Visit]([https://eventico-backend.onrender.com/api/endpoints](https://eventico.netlify.app/))  
+🔗 **Deployed:** [Visit deployed App here]([https://eventico.netlify.app/])  
+
 
 ---
 
 ## 🛠 Tech Stack
-React 18
 
-- Vite (for lightning-fast development)
-- TailwindCSS (for styling)
-- Axios (for API requests)
-- React Router DOM (for routing)
-- Lucide-react / Heroicons (for icons)
-- Netlify (for deployment)
+- **React 18** – Frontend JavaScript library for building dynamic UIs
+- **Vite** – Modern frontend build tool for fast development and optimized production builds
+- **TailwindCSS** – Utility-first CSS framework for custom and responsive styling
+- **Axios** – Promise-based HTTP client for communicating with the backend API
+- **React Router DOM** – Declarative routing and navigation management in React apps
+- **Lucide-react** / **Heroicons** – Icon libraries for clean, accessible SVG icons
+- **Netlify** – Deployment platform used to host the frontend (with CI/CD support)
 
 ---
 
