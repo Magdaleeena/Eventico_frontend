@@ -58,13 +58,6 @@ export const getEventById = async (eventId) => {
   }
 };
 
-// Local frontend search (no need for async here)
-export const searchEventsLocally = (events, query) => {
-  return events.filter((event) =>
-    event.name.toLowerCase().includes(query.toLowerCase())
-  );
-};
-
 // USER: Sign up
 export const signUpUser = async (userData) => {
   try {
