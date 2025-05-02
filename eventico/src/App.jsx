@@ -11,7 +11,7 @@ import SignUp from './pages/SignUp';
 import SignOut from './pages/SignOut';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
-
+import DeleteProfile from './pages/DeleteProfile';
 
 function App() {
   return (
@@ -27,7 +27,8 @@ function App() {
         <Route path="/login" element={<SignIn/>} /> 
         <Route path="/signout" element={<SignOut />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/edit-profile" element={<EditProfile />} />      
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/delete-profile" element={<DeleteProfile/>} />   
       </Routes>
       <Footer />
     </>

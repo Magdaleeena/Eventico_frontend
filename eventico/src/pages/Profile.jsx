@@ -155,6 +155,14 @@ const Profile = () => {
             Edit Profile
             </button>
       </div>
+      <div className="mt-3">
+        <button
+          className="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700 transition"
+          onClick={() => navigate('/delete-profile')}
+        >
+          Delete Profile
+        </button>
+      </div>
     </div>
   );
 }

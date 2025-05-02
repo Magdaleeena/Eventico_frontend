@@ -111,6 +111,18 @@ export const updateUserProfile = async (updatedData) => {
   }
 };
 
+// USER: Delete own profile
+export const deleteUserProfile = async () => {
+  try {
+    const { data } = await api.delete('/users/me');
+    return data;
+  } catch (error) {
+    console.error('Error deleting profile:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+
 // Sign Up for an event
 export const signUpForEvent = async (eventId) => {
   try {
