@@ -66,6 +66,8 @@ npm run dev
 - 🎫 **Event Signup** – Join or leave events with real-time updates
 
 - 🛠️ **Profile Management** – Edit user profile and view joined events
+  
+- 🧹 **Delete Account** – Users can permanently delete their profile and all associated data
 
 - 👑 **Admin Controls** – Create, update, and delete events (admin only)
 
