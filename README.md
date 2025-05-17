@@ -89,7 +89,7 @@ npm run dev
 
 ---
 
-## 🧪 Test details
+## 🧪 Test Account Access Details
 
 **Regular user:**
 login: regina@phalange.com
