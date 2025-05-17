@@ -89,6 +89,18 @@ npm run dev
 
 ---
 
+## 🧪 Test details
+
+**Regular user:**
+login: regina@phalange.com
+password: Apple2398*
+
+**Admin user:**
+login: consuela@bananahammock.com
+password: test123456*
+
+---
+
 ## 📝 Notes
 - This frontend depends on the Eventico Backend for data and authentication.
 
